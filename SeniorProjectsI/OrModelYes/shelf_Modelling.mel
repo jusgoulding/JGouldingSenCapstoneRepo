@@ -1,0 +1,61 @@
+global proc shelf_Modelling () {
+    global string $gBuffStr;
+    global string $gBuffStr0;
+    global string $gBuffStr1;
+
+
+    $gBuffStr = `toolButton -style iconOnly -doubleClickCommand "toolPropertyWindow" -cl toolCluster `;
+    $gBuffStr1 = `    nexMultiCutContext
+        -image1 "multiCut_NEX32.png" 
+        -image2 "multiCut_NEX32.png" 
+        -image3 "multiCut_NEX32.png" 
+`;
+    toolButton -edit -tool $gBuffStr1 -toolImage1 $gBuffStr1 "multiCut_NEX32.png" $gBuffStr;
+    toolButton -edit -tool $gBuffStr1 $gBuffStr;
+
+    $gBuffStr = `toolButton -style iconOnly -doubleClickCommand "toolPropertyWindow" -cl toolCluster `;
+    $gBuffStr1 = `    polySelectEditCtx
+        -image1 "polySplitEdgeRing.png" 
+        -image2 "vacantCell.png" 
+        -image3 "vacantCell.png" 
+        -mode 1
+        -autoComplete 1
+        -divisions 3
+        -useEqualMultiplier 1
+        -fixQuads 1
+        -smoothingAngle 30
+        -splitType 1
+        -insertWithEdgeFlow 0
+        -adjustEdgeFlow 1
+`;
+    toolButton -edit -tool $gBuffStr1 -toolImage1 $gBuffStr1 "polySplitEdgeRing.png" $gBuffStr;
+    toolButton -edit -tool $gBuffStr1 $gBuffStr;
+
+    $gBuffStr = `toolButton -style iconOnly -doubleClickCommand "toolPropertyWindow" -cl toolCluster `;
+    $gBuffStr1 = `    polyAppendFacetCtx
+        -image1 "polyAppendFacet.png" 
+        -image2 "vacantCell.png" 
+        -image3 "vacantCell.png" 
+        -append 1
+        -subdivision 1
+        -texture 1
+        -rotate 0
+        -isRotateAvailable 0
+        -planarConstraint 0
+        -maximumNumberOfPoints -1
+`;
+    toolButton -edit -tool $gBuffStr1 -toolImage1 $gBuffStr1 "polyAppendFacet.png" $gBuffStr;
+    toolButton -edit -tool $gBuffStr1 $gBuffStr;
+
+    $gBuffStr = `toolButton -style iconOnly -doubleClickCommand "toolPropertyWindow" -cl toolCluster `;
+    $gBuffStr1 = `    targetWeldCtx
+        -image1 "weld_NEX32.png" 
+        -image2 "vacantCell.png" 
+        -image3 "vacantCell.png" 
+        -mergeToCenter 0
+`;
+    toolButton -edit -tool $gBuffStr1 -toolImage1 $gBuffStr1 "weld_NEX32.png" $gBuffStr;
+    toolButton -edit -tool $gBuffStr1 $gBuffStr;
+
+
+} 
