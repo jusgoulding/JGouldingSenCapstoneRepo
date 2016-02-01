@@ -1,0 +1,82 @@
+//Define Globals
+global string $textfield1;
+global string $textfield2;
+global int $Start;
+global int $End;
+
+
+//Input Function
+global proc updateStart()
+{
+    global string $textfield1;
+    global int $Start;
+    string $sv = `textField -q -text $textfield1`;
+    print("The current text of the textfield is \"" + $Start + "\"\n");
+    $Start = (int)$sv;
+    
+}
+global proc updateEnd()
+{
+    global string $textfield2;
+    global int $End;
+    string $ev = `textField -q -text $textfield2`;
+    print("The current text of the textfield is \"" + $ev + "\"\n");
+    $End = (int)$ev;
+}
+
+//Delete old Menu
+if (`window -exists $name`) deleteUI $name;
+
+string $name = "kind";
+string $myString = "myString";
+
+//Create Window
+window 
+    -t "Manual Batch Render"
+    -s 0
+    -rtf 1
+    -width 250
+    -height 150
+    -maximizeButton 0
+    $name;
+
+formLayout -nd 100 myForm;
+    text -label "WARNING Once executed you cannot stop" myText1;
+    text -label "Start Frame" myText2;
+    $textfield1 = `textField -pht 1 -w 35 -changeCommand "updateStart" myText3`;
+    text -label "End Frame" myText4;
+    $textfield2 = `textField -pht 100 -w 35 -changeCommand "updateEnd" myText5`;
+    button -label "Render" -command "bRender" myText6;
+ 
+ formLayout -edit
+     -attachForm myText1 "top" 10
+     -attachForm myText1 "left" 25
+     -attachForm myText1 "right" 25
+    
+     -attachForm myText2 "top" 45
+     -attachForm myText2 "left" 45
+     -attachForm myText3 "top" 42
+     -attachForm myText3 "left" 150
+     
+     -attachForm myText4 "top" 75
+     -attachForm myText4 "left" 45
+     -attachForm myText5 "top" 72
+     -attachForm myText5 "left" 150
+    
+     -attachForm myText6 "top" 115
+     -attachForm myText6 "left" 25
+     -attachForm myText6 "right" 25
+     myForm; 
+     
+showWindow;
+
+global proc bRender()
+{
+global int $Start;
+global int $End;
+
+int $i;
+for ($i = $Start; $i <= $End; $i++){
+currentTime $i;
+RenderIntoNewWindow;}
+}

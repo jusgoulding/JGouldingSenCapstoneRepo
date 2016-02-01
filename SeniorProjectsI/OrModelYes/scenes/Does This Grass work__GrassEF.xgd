@@ -1,0 +1,11 @@
+# XGen Delta File
+#
+# Version:  C:/Program Files/Autodesk/Maya2016/plug-ins/xgen/
+# Author:   Redone
+# Date:     Sun Jan 31 04:29:03 2016
+
+FileVersion 17
+
+GrassLookAt    SplinePrimitive    iMethod    1
+GrassLookAt    SplinePrimitive    useCache    true
+GrassLookAt    RendermanRenderer    custom__mr_rendermode    1
